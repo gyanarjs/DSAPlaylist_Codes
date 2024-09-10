@@ -1,0 +1,27 @@
+#include<algorithm>
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int maxFrequency(vector<int>& nums, int k) {
+    int ans = 0;
+    long sum = 0;
+
+    sort(nums.begin(), nums.end());
+
+    for (int l = 0, r = 0; r < nums.size(); ++r) {
+      sum += nums[r];
+      while (sum + k < static_cast<long>(nums[r]) * (r - l + 1))
+        sum -= nums[l++];
+      ans = max(ans, r - l + 1);
+    }
+
+    return ans;
+  }
+
+int main()
+{
+
+
+    return 0;
+}
